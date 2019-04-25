@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1556182307 source:d:\sopelana\parcial\parcial\parcial 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	"bibloteca.h"
+	"peliculas.h"
+
+1556181489 d:\sopelana\parcial\parcial\parcial 1\bibloteca.h
+	<string.h>
+	"time.h"
+	"bibloteca.c"
+
+1556181780 d:\sopelana\parcial\parcial\parcial 1\bibloteca.c
+
+1556182836 d:\sopelana\parcial\parcial\parcial 1\peliculas.h
+	"peliculas.c"
+
+1556182847 d:\sopelana\parcial\parcial\parcial 1\peliculas.c
+
