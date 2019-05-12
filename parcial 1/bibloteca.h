@@ -19,4 +19,5 @@ int getValidCodigoInt(char requestMessage[]);
 int alfanumericostitulo(char str[]);
 int getStringLetrasNumeros(char mensaje[],char input[]);
 void getValidStringTitulo(char requestMessage[],char errorMessage[], char input[]);
+int codigoMayor(char mensaje[], int valor);
 #include "bibloteca.c"

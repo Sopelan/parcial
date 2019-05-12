@@ -115,24 +115,24 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
 {
     int input;
     char inputAux[128];
-    while(1)
+
+
+    if(!getStringNumero(requestMessage,inputAux))
     {
-        if(!getStringNumero(requestMessage,inputAux))
-        {
-            printf("%s",errorMessage);
-            continue;
-        }
-        input = atoi(inputAux);
-        if(input >= lowLimit && input <= hiLimit)
-        {
-            return input;
-        }
-        else
-        {
-            printf("tiene que estar entre %d y %d\n",lowLimit,hiLimit);
-            continue;
-        }
+        printf("%s",errorMessage);
+        return 0;
     }
+    input = atoi(inputAux);
+    if(input >= lowLimit && input <= hiLimit)
+    {
+            return input;
+    }
+    else
+    {
+        printf("tiene que estar entre %d y %d\n",lowLimit,hiLimit);
+        return 0;
+    }
+
 
 }
 void getValidString(char requestMessage[],char errorMessage[], char input[])
@@ -252,4 +252,25 @@ int getStringLetrasNumeros(char mensaje[],char input[])
     }
     return 0;
 }
+int codigoMayor(char mensaje[], int valor )
+{
+    int num;
+    char aux[128];
+    if(!getStringNumero(mensaje, aux))
+    {
+        printf("tiene que ser un numero\n");
+        return 0;
+    }
+    num = atoi(aux);
+    if(num < valor)
+    {
+        printf("tiene que ser un numero mas grande que %d",valor);
+        return 0;
 
+    }
+
+    return num;
+
+
+
+}
