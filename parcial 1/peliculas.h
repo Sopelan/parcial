@@ -4,13 +4,13 @@ typedef struct{
     int code;
     int actor;
     int status;
-    char genero[128];
     int fechaDeEstreno;
-}movie;
-void setMovieStatus(movie movieArray[],int arrayLenght,int value);
-int findMovieEmptyPlace(movie[],int );
-int findMovieByCode(movie[],int ,int);
-void setMovie( movie movieArray[],int freePlaceIndex, int codeAux,char titleAux[],int actorAux ,int fechaDeEstrenoAux);
-void showMovieArray(movie  movieArray[],int arrayLenght , eActores actores[] , int arrayLenghtActores);
-void orderMovie(movie  movieArray[],int arrayLenght );
+    int genero;
+}eMovie;
+void setMovieStatus(eMovie movieArray[],int arrayLenght,int value);
+int findMovieEmptyPlace(eMovie[],int );
+int findMovieByCode(eMovie[],int ,int);
+void setMovie( eMovie movieArray[],int freePlaceIndex, int codeAux,char titleAux[],int actorAux ,int fechaDeEstrenoAux , int generoAux);
+void showMovieArray(eMovie  movieArray[],int arrayLenght , eActores actores[] , int arrayLenghtActores , eGenero generoArray[], int arrayLenghtGenero);
+void orderMovie(eMovie  movieArray[],int arrayLenght );
 #include "peliculas.c"

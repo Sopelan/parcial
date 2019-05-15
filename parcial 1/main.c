@@ -33,6 +33,7 @@ considere necesario como por ejemplo cuestiones de estética del programa.
 #include <stdio.h>
 #include <stdlib.h>
 **********************************************************************************/
+#define QTYG 13
 #define QTYAC 6
 #define QTY 300
 #define LIBRE -2
@@ -41,7 +42,9 @@ considere necesario como por ejemplo cuestiones de estética del programa.
 #include <stdlib.h>
 #include "bibloteca.h"
 #include "actores.h"
+#include "genero.h"
 #include "peliculas.h"
+
 
 
 int main()
@@ -50,16 +53,30 @@ int main()
     int opcion;
     int emptyPlace;
     int findPLace;
-    movie movieArray[QTY];
-    movie auxMovie;
+    eMovie movieArray[QTY];
+    eMovie auxMovie;
     eActores actores[QTYAC];
+    eGenero genero[QTYG];
     setActores(actores , 0 , 1 , "julieta roberto" , "EEUU");
     setActores(actores , 1 , 2 , "Roberto deniro" , "EEUU");
     setActores(actores , 2 , 3 , "Richar darin" , "Argentina");
     setActores(actores , 3 , 4 , "tita merelo" , "Argentina");
     setActores(actores , 4 , 5 , "sandro" , "Argentina");
     setActores(actores , 5 , 6 , "","");
-
+    setGenero(genero , 0 , "drama" );
+    setGenero(genero , 1 , "Ciencia Ficcion");
+    setGenero(genero , 2 , "Accion");
+    setGenero(genero , 3 , "Terror");
+    setGenero(genero , 4 , "Comedia" );
+    setGenero(genero , 5 , "Aventuras");
+    setGenero(genero , 6 , "Animacion");
+    setGenero(genero , 7 , "Romance");
+    setGenero(genero , 8 , "Intriga");
+    setGenero(genero , 9 , "Belico");
+    setGenero(genero , 10 , "Musical");
+    setGenero(genero , 11 , "Historico");
+    setGenero(genero , 12 , "Western");
+    setGeneroStatus(genero , QTYG);
     setMovieStatus(movieArray , QTY , LIBRE);
     while (option != 5)
     {
@@ -87,7 +104,12 @@ int main()
                 auxMovie.fechaDeEstreno = getValidInt("cual es su anio de estreno\n","desbes ser un  numero\n",1894 , 2025);
                 if(auxMovie.fechaDeEstreno == 0)
                     break;
-                setMovie(movieArray , emptyPlace  , auxMovie.code, auxMovie.title ,auxMovie.actor ,auxMovie.fechaDeEstreno);
+                showGenerosArray(genero , QTYG);
+                auxMovie.genero = getValidInt("elija su genero\n","deber ser un numero",1,QTYG + 1);
+                if(auxMovie.genero == 0 )
+                    break;
+
+                setMovie(movieArray , emptyPlace  , auxMovie.code, auxMovie.title ,auxMovie.actor ,auxMovie.fechaDeEstreno , auxMovie.genero);
                 break;
             case 2:
                 system("cls");
@@ -147,7 +169,7 @@ int main()
                 {
                     case 1:
                         orderMovie(movieArray,QTY );
-                        showMovieArray(  movieArray,QTY , actores , QTYAC) ;
+                        showMovieArray(  movieArray,QTY , actores , QTYAC , genero , QTYG ) ;
                         break;
                     case 2:
                         orderActor(actores , QTYAC - 1 );

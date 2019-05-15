@@ -1,4 +1,4 @@
-void setMovieStatus(movie movieArray[],int arrayLenght,int value)
+void setMovieStatus(eMovie movieArray[],int arrayLenght,int value)
 {
         int i;
         for(i = 0 ; i <  arrayLenght ;  i++)
@@ -7,7 +7,7 @@ void setMovieStatus(movie movieArray[],int arrayLenght,int value)
             movieArray[i].id = 1000 + i;
         }
 }
-int findMovieEmptyPlace(movie movieArray[],int arrayLenght)
+int findMovieEmptyPlace(eMovie movieArray[],int arrayLenght)
 {
     int i;
     for(i = 0 ; i < arrayLenght ; i++)
@@ -17,7 +17,7 @@ int findMovieEmptyPlace(movie movieArray[],int arrayLenght)
     }
     return OCUPADO;
 }
-int findMovieByCode(movie movieArray[],int arrayLenght,int code)
+int findMovieByCode(eMovie movieArray[],int arrayLenght,int code)
 {
     int i;
     for(i = 0 ; i < arrayLenght ; i++)
@@ -30,54 +30,64 @@ int findMovieByCode(movie movieArray[],int arrayLenght,int code)
     }
     return LIBRE;
 }
-void setMovie( movie movieArray[],int freePlaceIndex, int codeAux,char titleAux[], int actorAux ,int fechaDeEstrenoAux)
+void setMovie( eMovie movieArray[],int freePlaceIndex, int codeAux,char titleAux[], int actorAux ,int fechaDeEstrenoAux , int generoAux)
 {
     movieArray[freePlaceIndex].code = codeAux;
     strcpy(movieArray[freePlaceIndex].title ,titleAux);
     movieArray[freePlaceIndex].actor = actorAux;
     movieArray[freePlaceIndex].fechaDeEstreno = fechaDeEstrenoAux;
     movieArray[freePlaceIndex].status = OCUPADO;
+    movieArray[freePlaceIndex].genero = generoAux;
 }
 
-void showMovieArray(movie  movieArray[],int arrayLenght , eActores actores[] , int arrayLenghtActores)
+void showMovieArray(eMovie  movieArray[],int arrayLenght , eActores actores[] , int arrayLenghtActores, eGenero generoArray[], int arrayLenghtGenero)
 {
     int i;
     int opcion;
     int j;
+    int k;
 
     opcion = getValidInt("que queres ver?\n1.las peliculas sin actores\n2.las peliculas con actores\n","tiene que ser un numero\n",1,2);
     switch(opcion)
 
     {
         case 1:
-            printf("|%10s|\t|%10s|\t|%10s|\t|%15s|\n","ID","codigo","titulo","fecha de estreno");
+            printf("|%10s|\t|%10s|\t|%10s|\t|%10s|\n","ID","titulo","estreno","genero");
             for(i = 0 ; i < arrayLenghtActores ; i++)
             {
                 for(j = 0 ; j < arrayLenght ; j++)
                 {
-                    if(movieArray[j].status == OCUPADO && movieArray[j].actor == actores[i].id)
+                    for (k = 0 ; k < arrayLenghtGenero ; k++)
                     {
-                        if(movieArray[j].actor == 6)
+                        if(movieArray[j].status == OCUPADO && movieArray[j].actor == actores[i].id && movieArray[j].genero == generoArray[k].id)
                         {
-                            printf("|%10d|\t|%10d|\t|%10s|\t|%15d|\n",movieArray[j].id,movieArray[j].code,movieArray[j].title , movieArray[j].fechaDeEstreno);
+                            if(movieArray[j].actor == 6)
+                            {
+                                printf("|%10d|\t|%10s|\t|%10d|\t|%10s|\n",movieArray[j].code,movieArray[j].title , movieArray[j].fechaDeEstreno , generoArray[k].name);
+                            }
                         }
                     }
+
                 }
             }
         break;
         case 2:
-            printf("|%10s|\t|%10s|\t|%10s|\t|%15s|\t|%10s|\n","ID","codigo","titulo","fecha de estreno","actores");
+            printf("|%10s|\t|%10s|\t|%10s|\t|%15s|\t|%10s|\n","codigo","titulo","estreno","actores","genero");
             for(i = 0 ; i < arrayLenghtActores ; i++)
             {
                 for(j = 0 ; j < arrayLenght ; j++)
                 {
-                    if(movieArray[j].status == OCUPADO && movieArray[j].actor == actores[i].id)
+                    for (k = 0 ; k < arrayLenghtGenero ; k++)
                     {
-                        if(movieArray[j].actor != 6)
+                        if(movieArray[j].status == OCUPADO && movieArray[j].actor == actores[i].id && movieArray[j].genero == generoArray[k].id)
                         {
-                            printf("|%10d|\t|%10d|\t|%10s|\t|%15d|\t|%10s|\n",movieArray[j].id,movieArray[j].code,movieArray[j].title,movieArray[j].fechaDeEstreno,actores[i].name);
+                            if(movieArray[j].actor != 6)
+                            {
+                                printf("|%10d|\t|%10s|\t|%10d|\t|%15s|\t|%10s|\n",movieArray[j].code,movieArray[j].title,movieArray[j].fechaDeEstreno,actores[i].name,generoArray[k].name);
+                            }
                         }
                     }
+
                 }
 
 
@@ -88,11 +98,11 @@ void showMovieArray(movie  movieArray[],int arrayLenght , eActores actores[] , i
 
     }
 }
-void orderMovie(movie  movieArray[],int arrayLenght )
+void orderMovie(eMovie  movieArray[],int arrayLenght )
 {
     int i;
     int j;
-    movie auxMovie;
+    eMovie auxMovie;
     for(i = 0 ; i < arrayLenght - 1 ; i++)
     {
         for(j = i + 1 ; j < arrayLenght ; j++)

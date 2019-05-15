@@ -45,3 +45,35 @@
 
 1557636840 c:\users\marth\desktop\parcial\parcial 1\actores.c
 
+1557948396 source:c:\users\sopelan1\desktop\utn\parcial\parcial 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	"bibloteca.h"
+	"actores.h"
+	"genero.h"
+	"peliculas.h"
+
+1557943193 c:\users\sopelan1\desktop\utn\parcial\parcial 1\bibloteca.h
+	<string.h>
+	"time.h"
+	"bibloteca.c"
+
+1557948375 c:\users\sopelan1\desktop\utn\parcial\parcial 1\bibloteca.c
+
+1557943193 c:\users\sopelan1\desktop\utn\parcial\parcial 1\actores.h
+	"actores.c"
+
+1557943193 c:\users\sopelan1\desktop\utn\parcial\parcial 1\actores.c
+
+1557944972 c:\users\sopelan1\desktop\utn\parcial\parcial 1\peliculas.h
+	"peliculas.c"
+
+1557948924 c:\users\sopelan1\desktop\utn\parcial\parcial 1\peliculas.c
+
+1557948385 c:\users\sopelan1\desktop\utn\parcial\parcial 1\genero.h
+	"genero.c"
+
+1557948263 c:\users\sopelan1\desktop\utn\parcial\parcial 1\genero.c
+

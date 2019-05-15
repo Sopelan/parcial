@@ -221,9 +221,13 @@ int alfanumericostitulo(char str[])
     int j = 0;
     while(str[i] != '\0')
     {
-        if((str[i] < 'a' || str[i] > 'z' ) && (str[i] < 'A' || str[i] > 'Z' ) && (str[i] < '0' || str[i] > '9' ) )
+        if((str[i] >= 'a' || str[i] <= 'z' ) || (str[i] >= 'A' || str[i] <= 'Z' ) || (str[i] >= '0' || str[i] <= '9' ) || str[i] == ' ')
         {
-            printf("tiene que contener letra y numeros");
+
+        }
+        else
+        {
+            printf("tiene que contener letra y numeros\n");
             return 0;
         }
 
@@ -264,7 +268,7 @@ int codigoMayor(char mensaje[], int valor )
     num = atoi(aux);
     if(num < valor)
     {
-        printf("tiene que ser un numero mas grande que %d",valor);
+        printf("tiene que ser un numero mas grande que %d\n",valor);
         return 0;
 
     }

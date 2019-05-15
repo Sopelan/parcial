@@ -43,6 +43,13 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="bibloteca.h" />
+		<Unit filename="genero.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="genero.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
