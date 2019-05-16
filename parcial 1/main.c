@@ -33,6 +33,31 @@ considere necesario como por ejemplo cuestiones de estética del programa.
 #include <stdio.h>
 #include <stdlib.h>
 **********************************************************************************/
+/**
+Necesidad:
+Se desea construir una aplicación capaz de almacenar y administrar las fichas técnicas de
+películas. De cada película, se necesita un identificador unívoco, su código de película ,su
+título, año de estreno, genero (accion , comedia ,terror y otro) y un actor
+principal(estructura). De los 5 actores se almacena: el id, el nombre y su país de origen.
+estos son:
+1- Julieta roberto , EEUU
+2- Richar darin,Argentina
+3- Nicole Kidman, Australiana
+4- Tita merello,Argentina
+5- Natalia Oreiro, Uruguay
+las películas son :( se deben agregar los atributos faltantes)
+1,999,terminator ,1,acción
+2,666,thor ,5,acción
+3,555,it ,4,terror
+4,777,gladiador ,4,romántica
+, el programa solo tiene capacidad para almacenar 1 solo actor principal por película.
+Crear un menú de opciones para que el usuario pueda interactuar con:
+Primera parte
+1. Todas las películas con género y actor.
+2. Películas cuya nacionalidad del actor sea EEUU
+
+ */
+
 #define QTYG 13
 #define QTYAC 6
 #define QTY 300
@@ -59,9 +84,9 @@ int main()
     eGenero genero[QTYG];
     setActores(actores , 0 , 1 , "julieta roberto" , "EEUU");
     setActores(actores , 1 , 2 , "Roberto deniro" , "EEUU");
-    setActores(actores , 2 , 3 , "Richar darin" , "Argentina");
+    setActores(actores , 2 , 3 , "Nicole Kidman" , "Argentina");
     setActores(actores , 3 , 4 , "tita merelo" , "Argentina");
-    setActores(actores , 4 , 5 , "sandro" , "Argentina");
+    setActores(actores , 4 , 5 , "Natalia Oreiro" , "Uruguay");
     setActores(actores , 5 , 6 , "","");
     setGenero(genero , 0 , "drama" );
     setGenero(genero , 1 , "Ciencia Ficcion");
@@ -78,6 +103,10 @@ int main()
     setGenero(genero , 12 , "Western");
     setGeneroStatus(genero , QTYG);
     setMovieStatus(movieArray , QTY , LIBRE);
+    setMovie(movieArray , 0 , 999 , "terminator" , 1 , 1986 , 2);
+    setMovie(movieArray , 1 , 666 , "thor" ,5 , 2011 , 2 );
+    setMovie(movieArray , 2 , 555 , "it" , 4 ,  2017, 3 );
+    setMovie(movieArray , 3 , 777, "gladiador" ,4 , 2000  ,7);
     while (option != 5)
     {
         system("cls");

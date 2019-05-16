@@ -47,7 +47,7 @@ void showMovieArray(eMovie  movieArray[],int arrayLenght , eActores actores[] , 
     int j;
     int k;
 
-    opcion = getValidInt("que queres ver?\n1.las peliculas sin actores\n2.las peliculas con actores\n","tiene que ser un numero\n",1,2);
+    opcion = getValidInt("que queres ver?\n1.las peliculas sin actores\n2.las peliculas con actores\n3.peliculas con autores de EEUU\n","tiene que ser un numero\n",1,3);
     switch(opcion)
 
     {
@@ -82,6 +82,30 @@ void showMovieArray(eMovie  movieArray[],int arrayLenght , eActores actores[] , 
                         if(movieArray[j].status == OCUPADO && movieArray[j].actor == actores[i].id && movieArray[j].genero == generoArray[k].id)
                         {
                             if(movieArray[j].actor != 6)
+                            {
+                                printf("|%10d|\t|%10s|\t|%10d|\t|%15s|\t|%10s|\n",movieArray[j].code,movieArray[j].title,movieArray[j].fechaDeEstreno,actores[i].name,generoArray[k].name);
+                            }
+                        }
+                    }
+
+                }
+
+
+
+
+            }
+            break;
+            case 3:
+                            printf("|%10s|\t|%10s|\t|%10s|\t|%15s|\t|%10s|\n","codigo","titulo","estreno","actores","genero");
+            for(i = 0 ; i < arrayLenghtActores ; i++)
+            {
+                for(j = 0 ; j < arrayLenght ; j++)
+                {
+                    for (k = 0 ; k < arrayLenghtGenero ; k++)
+                    {
+                        if(movieArray[j].status == OCUPADO && movieArray[j].actor == actores[i].id && movieArray[j].genero == generoArray[k].id)
+                        {
+                            if(strcmp(actores[i].country , "EEUU") == 0)
                             {
                                 printf("|%10d|\t|%10s|\t|%10d|\t|%15s|\t|%10s|\n",movieArray[j].code,movieArray[j].title,movieArray[j].fechaDeEstreno,actores[i].name,generoArray[k].name);
                             }

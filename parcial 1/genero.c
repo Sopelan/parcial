@@ -13,7 +13,7 @@ void setGeneroStatus(eGenero generoArray[],int arrayLenght)
 void showGenerosArray(eGenero genero[] , int arrayLenght)
 {
     int i;
-    int j;
+    /*int j;
     char auxName[128];
     for(i = 0 ; i < arrayLenght - 1 ; i++)
     {
@@ -27,6 +27,7 @@ void showGenerosArray(eGenero genero[] , int arrayLenght)
             }
         }
     }
+    */
     printf("|%5s|\t|%15s|\n","ID","nombre");
     for(i = 0 ; i < arrayLenght ; i++)
     {
