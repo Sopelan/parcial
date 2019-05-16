@@ -55,10 +55,16 @@ Crear un menú de opciones para que el usuario pueda interactuar con:
 Primera parte
 1. Todas las películas con género y actor.
 2. Películas cuya nacionalidad del actor sea EEUU
-
+Segunda parte
+Agregar las siguientes películas:
+1004,111,scary movie,4,comedia,2012
+1005,222,Yo soy asi ,4,otro,1990
+3. Películas cuya nacionalidad del actor sea de un país ingresado por consola,
+informar si no hay películas de ese país.
+4. Por cada género el título de las películas que pertenecen a ese género
  */
 
-#define QTYG 13
+#define QTYG 14
 #define QTYAC 6
 #define QTY 300
 #define LIBRE -2
@@ -101,16 +107,21 @@ int main()
     setGenero(genero , 10 , "Musical");
     setGenero(genero , 11 , "Historico");
     setGenero(genero , 12 , "Western");
+    setGenero(genero ,13 , "otro");
     setGeneroStatus(genero , QTYG);
     setMovieStatus(movieArray , QTY , LIBRE);
     setMovie(movieArray , 0 , 999 , "terminator" , 1 , 1986 , 2);
     setMovie(movieArray , 1 , 666 , "thor" ,5 , 2011 , 2 );
     setMovie(movieArray , 2 , 555 , "it" , 4 ,  2017, 3 );
-    setMovie(movieArray , 3 , 777, "gladiador" ,4 , 2000  ,7);
+    setMovie(movieArray , 3 , 777 , "gladiador" ,4 , 2000  , 7 );
+    setMovie(movieArray , 4 , 111 ,"scary movie",4, 2012 , 4);
+    setMovie(movieArray , 5 , 222 , "Yo soy asi" ,4 ,1990 , 13);
+    setMovie(movieArray ,6,101,"scary movie 2" ,1 , 2015, 4);
+    setMovie(movieArray , 7 ,202,"sexto sentido" ,1,1999,13 );
     while (option != 5)
     {
         system("cls");
-        option = getValidInt("\n1.alta\n2.baja\n3.modificar\n4.listar\n5.salir\n","tiene que contener numeros\n",1,5);
+        option = getValidIntChar("\n1.alta\n2.baja\n3.modificar\n4.listar\n5.salir\n","tiene que contener numeros\n",1,5);
         switch(option)
         {
             case 1:
@@ -122,28 +133,26 @@ int main()
                     printf("no quedan lugares\n");
                     break;
                 }
-                auxMovie.code = codigoMayor("cual es el codigo\n",1000);
-                if(auxMovie.code == 0)
+                auxMovie.code = getValidIntChar("cual es el codigo\n","tiene que ser un numero\n",100,999);
+                findPLace = findMovieByCode(movieArray,QTY,auxMovie.code);
+                if(auxMovie.code == 0 )
                     break;
-                if(!getStringLetrasNumeros("cual es el titulo de la pelicula\n",auxMovie.title))
+                if(findPLace != LIBRE)
+                {
+                    printf("este codigo ya existe\n");
                     break;
+                }
+                getStringLetrasNumeros("cual es el titulo de la pelicula\n",auxMovie.title);
                 auxMovie.actor = getValidInt("\nelija el actor\n\n1.Julieta Roberto , EEUU\n2.Roberto Deniro, EEUU\n3.Richar Darin,Argentina\n4.Tita Merelo,Argentina\n5.Sandro, Argentina\n6.sin autor\n","tiene que ser un numero\n",1,6);
-                if(auxMovie.actor == 0)
-                    break;
                 auxMovie.fechaDeEstreno = getValidInt("cual es su anio de estreno\n","desbes ser un  numero\n",1894 , 2025);
-                if(auxMovie.fechaDeEstreno == 0)
-                    break;
                 showGenerosArray(genero , QTYG);
-                auxMovie.genero = getValidInt("elija su genero\n","deber ser un numero",1,QTYG + 1);
-                if(auxMovie.genero == 0 )
-                    break;
-
+                auxMovie.genero = getValidInt("elija su genero\n","deber ser un numero\n",1,QTYG);
                 setMovie(movieArray , emptyPlace  , auxMovie.code, auxMovie.title ,auxMovie.actor ,auxMovie.fechaDeEstreno , auxMovie.genero);
                 break;
             case 2:
                 system("cls");
                 printf("baja\n");
-                auxMovie.code = codigoMayor("cual es el codigo\n",1000);
+                auxMovie.code = getValidIntChar("cual es el codigo\n" , "tiene que ser un numero\n", 100  , 999);
                 if(auxMovie.code == 0)
                     break;
                 findPLace = findMovieByCode(movieArray ,QTY ,auxMovie.code);
@@ -157,7 +166,7 @@ int main()
             case 3:
                 system("cls");
                 printf("modificar\n");
-                auxMovie.code = codigoMayor("cual es el codigo\n",1000);
+                auxMovie.code = getValidIntChar("cual es el codigo\n" , "tiene que ser un numero\n", 100  , 999);
                 if(auxMovie.code == 0)
                     break;
                 findPLace = findMovieByCode(movieArray ,QTY ,auxMovie.code);
@@ -166,24 +175,19 @@ int main()
                     printf("no existe\n");
                     break;
                 }
-                opcion = getValidInt("que queres modificar\n1.titulo\n2.actor\n3.fecha de estreno\n","tiene que ser numero\n",1,3);
+                opcion = getValidIntChar("que queres modificar\n1.titulo\n2.actor\n3.fecha de estreno\n","tiene que ser numero\n",1,3);
                 switch(opcion)
                 {
                     case 1:
-                        if(!getStringLetrasNumeros("cual es el titulo de la pelicula\n",auxMovie.title))
-                            break;
+                        getStringLetrasNumeros("cual es el titulo de la pelicula\n",auxMovie.title);
                         strcpy(movieArray[findPLace].title , auxMovie.title);
                         break;
                     case 2:
                         auxMovie.actor = getValidInt("\nelija el actor\n\n1.Julieta Roberto , EEUU\n2.Roberto Deniro, EEUU\n3.Richar Darin,Argentina\n4.Tita Merelo,Argentina\n5.Sandro, Argentina\n6.sin autor\n","tiene que ser un numero\n",1,6);
-                        if(auxMovie.actor == 0)
-                            break;
                         movieArray[findPLace].actor = auxMovie.actor;
                         break;
                     case 3:
                         auxMovie.fechaDeEstreno = getValidInt("cual es su anio de estreno\n","desbes ser un  numero\n",1894 , 2025);
-                        if(auxMovie.fechaDeEstreno == 0)
-                            break;
                         movieArray[findPLace].fechaDeEstreno = auxMovie.fechaDeEstreno;
                         break;
                 }
@@ -191,7 +195,7 @@ int main()
             case 4:
                 system("cls");
                 printf("listar\n");
-                opcion = getValidInt("elija que mostrar\n1.mostrar ABM movie\n2.mostrar ABM actores\n","tiene que ser un numero",1,2);
+                opcion = getValidIntChar("elija que mostrar\n1.mostrar ABM movie\n2.mostrar ABM actores\n","tiene que ser un numero",1,2);
                 if(opcion == 0)
                     break;
                 switch(opcion)

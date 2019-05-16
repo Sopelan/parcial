@@ -117,21 +117,25 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
     char inputAux[128];
 
 
-    if(!getStringNumero(requestMessage,inputAux))
+    while(1)
     {
-        printf("%s",errorMessage);
-        return 0;
+            if(!getStringNumero(requestMessage,inputAux))
+        {
+            printf("%s",errorMessage);
+            continue;
+        }
+        input = atoi(inputAux);
+        if(input >= lowLimit && input <= hiLimit)
+        {
+                return input;
+        }
+        else
+        {
+            printf("tiene que estar entre %d y %d\n",lowLimit,hiLimit);
+            continue;
+        }
     }
-    input = atoi(inputAux);
-    if(input >= lowLimit && input <= hiLimit)
-    {
-            return input;
-    }
-    else
-    {
-        printf("tiene que estar entre %d y %d\n",lowLimit,hiLimit);
-        return 0;
-    }
+
 
 
 }
@@ -248,12 +252,20 @@ int alfanumericostitulo(char str[])
 int getStringLetrasNumeros(char mensaje[],char input[])
 {
     char aux[256];
-    getString(mensaje,aux);
-    if(alfanumericostitulo(aux))
+    while(1)
     {
-        strcpy(input,aux);
-        return 1;
+        getString(mensaje,aux);
+        if(alfanumericostitulo(aux))
+        {
+            strcpy(input,aux);
+            return 1;
+        }
+        else
+        {
+            continue;
+        }
     }
+
     return 0;
 }
 int codigoMayor(char mensaje[], int valor )
@@ -278,3 +290,24 @@ int codigoMayor(char mensaje[], int valor )
 
 
 }
+int getValidIntChar(char requestMessage[],char errorMessage[], int lowLimit, int hiLimit)
+{
+    int input;
+    char inputAux[128];
+    if(!getStringNumero(requestMessage,inputAux))
+    {
+        printf("%s",errorMessage);
+        return 0;
+        }
+        input = atoi(inputAux);
+        if(input >= lowLimit && input <= hiLimit)
+        {
+                return input;
+        }
+        else
+        {
+            printf("tiene que estar entre %d y %d\n",lowLimit,hiLimit);
+            return 0;
+        }
+}
+

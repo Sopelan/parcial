@@ -13,4 +13,5 @@ int findMovieByCode(eMovie[],int ,int);
 void setMovie( eMovie movieArray[],int freePlaceIndex, int codeAux,char titleAux[],int actorAux ,int fechaDeEstrenoAux , int generoAux);
 void showMovieArray(eMovie  movieArray[],int arrayLenght , eActores actores[] , int arrayLenghtActores , eGenero generoArray[], int arrayLenghtGenero);
 void orderMovie(eMovie  movieArray[],int arrayLenght );
+int getValidIntChar(char requestMessage[],char errorMessage[], int lowLimit, int hiLimit);
 #include "peliculas.c"
