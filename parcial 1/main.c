@@ -110,14 +110,14 @@ int main()
     setGenero(genero ,13 , "otro");
     setGeneroStatus(genero , QTYG);
     setMovieStatus(movieArray , QTY , LIBRE);
-    setMovie(movieArray , 0 , 999 , "terminator" , 1 , 1986 , 2);
-    setMovie(movieArray , 1 , 666 , "thor" ,5 , 2011 , 2 );
-    setMovie(movieArray , 2 , 555 , "it" , 4 ,  2017, 3 );
-    setMovie(movieArray , 3 , 777 , "gladiador" ,4 , 2000  , 7 );
-    setMovie(movieArray , 4 , 111 ,"scary movie",4, 2012 , 4);
-    setMovie(movieArray , 5 , 222 , "Yo soy asi" ,4 ,1990 , 13);
-    setMovie(movieArray ,6,101,"scary movie 2" ,1 , 2015, 4);
-    setMovie(movieArray , 7 ,202,"sexto sentido" ,1,1999,13 );
+    setMovie(movieArray , 0 , 999 , "terminator" , 1 , 1986 , 3);
+    setMovie(movieArray , 1 , 666 , "thor" ,5 , 2011 , 3 );
+    setMovie(movieArray , 2 , 555 , "it" , 4 ,  2017, 4 );
+    setMovie(movieArray , 3 , 777 , "gladiador" ,4 , 2000  , 8 );
+    setMovie(movieArray , 4 , 111 ,"scary movie",4, 2012 , 5);
+    setMovie(movieArray , 5 , 222 , "Yo soy asi" ,4 ,1990 , 14);
+    setMovie(movieArray ,6,101,"scary movie 2" ,1 , 2015, 5);
+    setMovie(movieArray , 7 ,202,"sexto sentido" ,1,1999,14 );
     while (option != 5)
     {
         system("cls");
