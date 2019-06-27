@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1561647814 source:c:\users\alumno\desktop\parcial\parcial 2\parcial 2\bibloteca.c
+	<stdio.h>
+	<stdlib.h>
+	"bibloteca.h"
+
+1561647814 c:\users\alumno\desktop\parcial\parcial 2\parcial 2\bibloteca.h
+	<string.h>
+	"time.h"
+
+1561658114 source:c:\users\alumno\desktop\parcial\parcial 2\parcial 2\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"bibloteca.h"
+	"empleado.h"
+	"LinkedList.h"
+	"controller.h"
+
+1561657830 c:\users\alumno\desktop\parcial\parcial 2\parcial 2\empleado.h
+
+1561656857 c:\users\alumno\desktop\parcial\parcial 2\parcial 2\linkedlist.h
+
+1561651333 c:\users\alumno\desktop\parcial\parcial 2\parcial 2\controller.h
+
+1561658169 source:c:\users\alumno\desktop\parcial\parcial 2\parcial 2\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"bibloteca.h"
+	"empleado.h"
+
+1561657081 source:c:\users\alumno\desktop\parcial\parcial 2\parcial 2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561657430 source:c:\users\alumno\desktop\parcial\parcial 2\parcial 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"bibloteca.h"
+	"empleado.h"
+	"LinkedList.h"
+	"controller.h"
+
